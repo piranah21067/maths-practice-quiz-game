@@ -83,9 +83,10 @@ print(" ")
 print(" ")
 print(" ")
 print(" ")
+print("------- graph--------")
 print(" ")
 
-for i in range(4):
+for i in range(len(selectedOperatorList)):
     print(selectedOperatorList[i]," |", end=" ")
     for j in range(round(avgTime[i])):
         print("#",end=" ")
