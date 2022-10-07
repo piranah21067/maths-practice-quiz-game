@@ -1,23 +1,32 @@
 import random
 import time
-print("---------- maths practice quiz game -----------")
+
+print("---------- Maths Practice Quiz Game -----------")
+
 totalQuestions=10
+score=0
+
 timeTakenForAdd=[]
 timeTakenForSub=[]
 timeTakenForMult=[]
 timeTakenForDiv=[]
+avgTime=[]  # Shows average time taken per question for all operators individually
 selectedOperatorList=[]
-print("enter 1 for normal, enter 2 for customized")
-option=int(input("enter your option here:"))
+
+
+print("Enter 1 for normal, enter 2 for customized")
+option=int(input("Enter your option here:"))
 operator=["+","-","*","/"]
 if option==2:
-    cust=input("do you want to test with specific operator?: ")
+    cust=input("Do you want to test with specific operator?: ")
     if cust=="yes":
-        ops=input("enter operator here ( +, -, *, /)")
+        ops=input("Enter operator here ( +, -, *, /)")
         operator=[ops]
-score=0
-print("----- test started -----")
+
+print("----- Test Started -----")
+
 start=time.time()
+
 for i in range(totalQuestions):
     startq=time.time()
     num=random.randint(1,10)
@@ -31,13 +40,14 @@ for i in range(totalQuestions):
     question= str(num) + selectedOperator + str(num2)
     print("what is", question)
     
-    userAns=int(input("enter your answer here: "))
+    userAns=int(input("Enter your answer here: "))
     correctAns= eval(question)
+    
     if userAns==correctAns:
-        print("your answer is correct ")
+        print("Your answer is correct ")
         score+=5
     else:
-        print("your answer is not correct correct answer is,", correctAns)
+        print("Your answer is not correct correct answer is,", correctAns)
         score-=1
     endq=time.time()
     timeTakenPerq=round(endq-startq)
@@ -50,18 +60,21 @@ for i in range(totalQuestions):
         timeTakenForDiv.append(timeTakenPerq)
     elif selectedOperator=="*":
         timeTakenForMult.append(timeTakenPerq)
-print("your score is", score,"/", totalQuestions*5 )
+
+print("Your score is", score,"/", totalQuestions*5 )
 end=time.time()
 time_taken=round(end-start)
-print(time_taken, "seconds taken to answer")
+print(time_taken, "Seconds taken to answer")
 
+# Converting list to set to remove duplicate values
 selectedOperatorList=set(selectedOperatorList)
 selectedOperatorList=list(selectedOperatorList)
+
 print(" ")
-print("------- average time taken -------")
+print("------- Average Time Taken -------")
 print(" ")
-avgTime=[]
 selectedOperatorList.sort()
+
 for i in selectedOperatorList:
     if i=="+":
         avgAdd=sum(timeTakenForAdd)/(len(timeTakenForAdd))
@@ -73,17 +86,18 @@ for i in selectedOperatorList:
         avgTime.append(avgSub)
     if i=="/":
         avgDiv=sum(timeTakenForDiv)/(len(timeTakenForDiv))
-        print("your average time for division is" ,round(avgDiv,2))
+        print("Your average time for division is" ,round(avgDiv,2))
         avgTime.append(avgDiv)
     if i=="*":
         avgMult=sum(timeTakenForMult)/(len(timeTakenForMult))
-        print("your average time for multiplication is" ,round(avgMult,2))
+        print("Your average time for multiplication is" ,round(avgMult,2))
         avgTime.append(avgMult)
+
 print(" ")
 print(" ")
 print(" ")
 print(" ")
-print("------- graph--------")
+print("------- Graph--------")
 print(" ")
 
 for i in range(len(selectedOperatorList)):
@@ -91,5 +105,6 @@ for i in range(len(selectedOperatorList)):
     for j in range(round(avgTime[i])):
         print("#",end=" ")
     print(" ")
+
 print("-------------------------------->")
 print("             time taken-->")
