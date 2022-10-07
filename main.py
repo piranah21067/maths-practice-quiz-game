@@ -52,13 +52,14 @@ for i in range(totalQuestions):
     endq=time.time()
     timeTakenPerq=round(endq-startq)
     print(timeTakenPerq)
+    
     if selectedOperator=="+":
         timeTakenForAdd.append(timeTakenPerq)
     elif selectedOperator=="-":
         timeTakenForSub.append(timeTakenPerq)
     elif selectedOperator=="/":
         timeTakenForDiv.append(timeTakenPerq)
-    elif selectedOperator=="*":
+    else:
         timeTakenForMult.append(timeTakenPerq)
 
 print("Your score is", score,"/", totalQuestions*5 )
@@ -67,8 +68,7 @@ time_taken=round(end-start)
 print(time_taken, "Seconds taken to answer")
 
 # Converting list to set to remove duplicate values
-selectedOperatorList=set(selectedOperatorList)
-selectedOperatorList=list(selectedOperatorList)
+selectedOperatorList=list(set(selectedOperatorList))
 
 print(" ")
 print("------- Average Time Taken -------")
@@ -93,10 +93,7 @@ for i in selectedOperatorList:
         print("Your average time for multiplication is" ,round(avgMult,2))
         avgTime.append(avgMult)
 
-print(" ")
-print(" ")
-print(" ")
-print(" ")
+print("\n  "*4)
 print("------- Graph--------")
 print(" ")
 
