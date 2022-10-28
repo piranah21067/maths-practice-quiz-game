@@ -3,7 +3,7 @@ import time
 
 print("---------- Maths Practice Quiz Game -----------")
 
-totalQuestions=10
+totalQuestions=5
 score=0
 
 timeTakenForAdd=[]
@@ -14,7 +14,8 @@ avgTime=[]  # Shows average time taken per question for all operators individual
 selectedOperatorList=[]
 
 
-print("Enter 1 for normal, enter 2 for customized")
+print("Enter 1 for normal which includes all the operators") 
+print("enter 2 for customized where you can choose a specific operator")
 option=int(input("Enter your option here:"))
 operator=["+","-","*","/"]
 if option==2:
@@ -33,7 +34,7 @@ for i in range(totalQuestions):
     num2=random.randint(1,100)
     selectedOperator= random.choice(operator)
     selectedOperatorList.append(selectedOperator)
-    if selectedOperator=="*" or operator=="/":
+    if selectedOperator=="*" or selectedOperator=="/":
         num2=random.randint(1,10)
     if selectedOperator=="/":
         num=random.randint(1,100)*num2
@@ -45,10 +46,10 @@ for i in range(totalQuestions):
     
     if userAns==correctAns:
         print("Your answer is correct ")
-        score+=5
+        score+=1
     else:
         print("Your answer is not correct correct answer is,", correctAns)
-        score-=1
+        score+=0
     endq=time.time()
     timeTakenPerq=round(endq-startq)
     print(timeTakenPerq)
@@ -105,3 +106,7 @@ for i in range(len(selectedOperatorList)):
 
 print("-------------------------------->")
 print("             time taken-->")
+
+
+
+print("accuracy in questions is:", (score/totalQuestions)*100,"%")
